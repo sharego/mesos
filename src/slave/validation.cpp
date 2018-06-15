@@ -15,6 +15,7 @@
 // limitations under the License.
 
 #include "slave/validation.hpp"
+#include "slave/constants.hpp"
 
 #include <string>
 
@@ -71,6 +72,10 @@ Option<Error> validateContainerId(const ContainerID& containerId)
   // (e.g. 'parent.parent.parent.value'). For now we only have one
   // level of nesting so it's ok.
   if (containerId.has_parent()) {
+    if (id.length() > MAX_NESTED_CONTAINER_ID_LENGTH) {
+      return Error("'ContainerID.value' '" + id + "' exceeds");
+    }
+
     Option<Error> parentError = validateContainerId(containerId.parent());
 
     if (parentError.isSome()) {

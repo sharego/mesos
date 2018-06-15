@@ -85,6 +85,9 @@ constexpr size_t MAX_COMPLETED_FRAMEWORKS = 50;
 // to store in memory.
 constexpr size_t DEFAULT_MAX_COMPLETED_EXECUTORS_PER_FRAMEWORK = 150;
 
+// Maximum number of a nested container id length
+constexpr size_t MAX_NESTED_CONTAINER_ID_LENGTH = 242;
+
 // Maximum number of completed tasks per executor to store in memory.
 //
 // NOTE: This should be greater than zero because the agent looks
